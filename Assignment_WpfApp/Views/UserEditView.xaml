@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:UserEditViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="650" d:DesignWidth="400">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,10 +28,23 @@
 
             <TextBlock Text="Email" />
             <TextBox Text="{Binding User.Email}" Margin="0 0 0 10" Padding="4" />
+
+            <TextBlock Text="Phone" />
+            <TextBox Text="{Binding User.Phone}" Margin="0 0 0 10" Padding="4" />
+
+            <TextBlock Text="Street Address" />
+            <TextBox Text="{Binding User.StreetAddress}" Margin="0 0 0 10" Padding="4" />
+
+            <TextBlock Text="Postal Code" />
+            <TextBox Text="{Binding User.PostalCode}" Margin="0 0 0 10" Padding="4" />
+
+            <TextBlock Text="City" />
+            <TextBox Text="{Binding User.City}" Margin="0 0 0 10" Padding="4" />
         </StackPanel>
 
         <StackPanel Grid.Row="2">
             <Button Command="{Binding SaveCommand}" Content="Save" Margin="0 10 0 5" Padding="5" />
+            <Button Command="{Binding DeleteCommand}" Content="Delete user" Padding="5"/>
             <Button Command="{Binding CancelCommand}" Content="Cancel" Margin="0 5 0 10" Padding="5" />
         </StackPanel>
     </Grid>

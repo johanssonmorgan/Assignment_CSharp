@@ -26,6 +26,17 @@ public partial class UserEditViewModel(IServiceProvider serviceProvider, IUserSe
     }
 
     [RelayCommand]
+    private void Delete()
+    {
+        var result = _userService.DeleteUser(User.Id);
+        if (result)
+        {
+            var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
+            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<UserListViewModel>();
+        }
+    }
+
+    [RelayCommand]
     private void Cancel()
     {
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();

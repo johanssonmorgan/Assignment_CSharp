@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:UserAddViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="650" d:DesignWidth="400">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

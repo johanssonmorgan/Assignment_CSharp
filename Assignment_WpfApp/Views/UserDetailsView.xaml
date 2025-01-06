@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:UserDetailsViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="650" d:DesignWidth="400">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -20,15 +20,29 @@
         <TextBlock Grid.Row="0" Grid.Column="0" Text="User Details" FontSize="20" FontWeight="Bold" />
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
-            <TextBlock Text="First Name" />
-            <TextBlock Text="{Binding User.FirstName}" Margin="0 0 0 10" Padding="4" />
+            <TextBlock FontSize="10" Text="User Id" />
+            <TextBlock FontSize="16" Text="{Binding User.Id}" Margin="0 0 0 10" Padding="0 4" />
 
-            <TextBlock Text="Last Name" />
-            <TextBlock Text="{Binding User.LastName}" Margin="0 0 0 10" Padding="4" />
+            <TextBlock FontSize="10" Text="Name" />
+            <TextBlock FontSize="16" Text="{Binding User.FullName}" Margin="0 0 0 10" Padding="0 4" />
 
-            <TextBlock Text="Email" />
-            <TextBlock Text="{Binding User.Email}" Margin="0 0 0 10" Padding="4" />
+            <TextBlock FontSize="10" Text="Address" />
+            <TextBlock FontSize="16" Text="{Binding User.StreetAddress}" Padding="0 4" />
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
+                <TextBlock FontSize="16" Margin="0 0 4 0" Grid.Column="0" Text="{Binding User.PostalCode}" />
+                <TextBlock FontSize="16" Grid.Column="1" Text="{Binding User.City}" />
+            </Grid>
+
+            <TextBlock FontSize="10" Text="Email" />
+            <TextBlock FontSize="16" Text="{Binding User.Email}" Margin="0 0 0 10" Padding="0 4" />
+
+            <TextBlock FontSize="10" Text="Phone" />
+            <TextBlock FontSize="16" Text="{Binding User.Phone}" Margin="0 0 0 10" Padding="0 4" />
 
         </StackPanel>
 

@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:UserListViewModel}"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="300">
+             d:DesignHeight="650" d:DesignWidth="400">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -36,12 +36,12 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding FirstName}" />
+                            <TextBlock Text="{Binding FullName}" />
                             <TextBlock Text="{Binding Email}" FontSize="10" />
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
-                            <Button CommandParameter="{Binding .}" Command="{Binding DataContext.GoToDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="&#xE710;" FontFamily="Segoe MDL2 Assets" Padding="7 0" Background="Transparent" />
+                            <Button CommandParameter="{Binding .}" Command="{Binding DataContext.GoToDetailsViewCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" Content="&#xE890;" FontFamily="Segoe MDL2 Assets" Padding="7 0" Background="Transparent" />
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
