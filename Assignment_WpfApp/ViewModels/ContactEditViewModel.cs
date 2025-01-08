@@ -18,7 +18,7 @@ public partial class ContactEditViewModel(IServiceProvider serviceProvider, ICon
     [RelayCommand]
     private void Save()
     {
-        var result = _contactService.UpdateContact((string)Contact.Id, (Contact)Contact);
+        var result = _contactService.UpdateContact(Contact.Id, Contact);
         if (result)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
@@ -29,7 +29,7 @@ public partial class ContactEditViewModel(IServiceProvider serviceProvider, ICon
     [RelayCommand]
     private void Delete()
     {
-        var result = _contactService.DeleteContact((string)Contact.Id);
+        var result = _contactService.DeleteContact(Contact.Id);
         if (result)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();

@@ -8,12 +8,10 @@ public class ContactFactory_Tests
     [Fact]
     public void Create_ShouldReturnContactRegistrationForm()
     {
-        // Arrange - Set up the necessary conditions, data, and objects required for the test.
-
-        // Act - Execute the method or action that is being tested.
+        // Act
         ContactRegistrationForm result = ContactFactory.Create();
 
-        // Assert - Verify that the expected outcome or result is achieved.
+        // Assert
         Assert.NotNull(result);
         Assert.IsType<ContactRegistrationForm>(result);
     }
@@ -24,13 +22,13 @@ public class ContactFactory_Tests
     [InlineData("Maria", "González", "maria.gonzalez@espanol.com", "0762345678", "Calle Mayor 12", "28013", "Madrid")]
     public void Create_ShouldReturnContact_WhenContactRegistrationFormIsSupplied(string firstName, string lastName, string email, string phone, string streetAddress, string postalCode, string city)
     {
-        // Arrange - Set up the necessary conditions, data, and objects required for the test.
+        // Arrange
         ContactRegistrationForm contactRegistrationForm = new() { FirstName = firstName, LastName = lastName, Email = email, Phone = phone, StreetAddress =streetAddress, PostalCode = postalCode, City = city};
 
-        // Act - Execute the method or action that is being tested.
+        // Act
         Contact result = ContactFactory.Create(contactRegistrationForm);
 
-        // Assert - Verify that the expected outcome or result is achieved.
+        // Assert
         Assert.NotNull(result);
         Assert.IsType<Contact>(result);
         Assert.Equal(contactRegistrationForm.FirstName, result.FirstName);

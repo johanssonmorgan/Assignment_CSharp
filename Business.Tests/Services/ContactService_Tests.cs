@@ -2,6 +2,7 @@
 using Business.Models;
 using Business.Services;
 using Moq;
+using System.Diagnostics.Contracts;
 using System.Numerics;
 
 namespace Business.Tests.Services;
@@ -71,5 +72,88 @@ public class ContactService_Tests
         Assert.Equal(expected[0].StreetAddress, result.First().StreetAddress);
         Assert.Equal(expected[0].PostalCode, result.First().PostalCode);
         Assert.Equal(expected[0].City, result.First().City);
+    }
+
+    [Fact]
+    public void DeleteContact_ShouldRemoveContactAndReturnTrue()
+    {
+        // Arrange
+        Contact contact1 = new()
+        {
+            Id = "1",
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "john.doe@example.com",
+            Phone = "0701234567",
+            StreetAddress = "Elm Street 123",
+            PostalCode = "90210",
+            City = "Beverly Hills"
+        };
+
+        Contact contact2 = new()
+        {
+            Id = "2",
+            FirstName = "Alice",
+            LastName = "Smith",
+            Email = "alice.smith@domain.com",
+            Phone = "0319876543",
+            StreetAddress = "Oak Avenue 456",
+            PostalCode = "30301",
+            City = "Gothenburg"
+        };
+
+        List<Contact> contacts = [contact1, contact2];
+
+        _fileServiceMock.Setup(fs => fs.LoadListFromFile()).Returns(contacts);
+
+        // Act
+        var result = _contactService.DeleteContact("1");
+
+        // Assert
+
+        Assert.True(result);
+        Assert.Single(contacts);
+        Assert.DoesNotContain(contact1, contacts);
+        _fileServiceMock.Verify(fs => fs.SaveListToFile(It.Is<List<Contact>>(contacts => contacts.Count == 1 && contacts[0].Id == "2")), Times.Once);
+    }
+
+    [Fact]
+    public void UpdateContact_ShouldUpdateContactAndReturnTrue()
+    {
+        // Arrange
+        Contact contact = new()
+        {
+            Id = "1",
+            FirstName = "John",
+            LastName = "Doe",
+            Email = "john.doe@example.com",
+            Phone = "0701234567",
+            StreetAddress = "Elm Street 123",
+            PostalCode = "90210",
+            City = "Beverly Hills"
+        };
+
+        Contact updatedContact = new()
+        {
+            Id = "1",
+            FirstName = "Morgan",
+            LastName = "Johansson",
+            Email = "john.doe@example.com",
+            Phone = "0701234567",
+            StreetAddress = "Elm Street 123",
+            PostalCode = "90210",
+            City = "Beverly Hills"
+        };
+
+        List<Contact> contacts = [contact];
+        _fileServiceMock.Setup(fs => fs.LoadListFromFile()).Returns(contacts);
+
+        // Act
+        var result = _contactService.UpdateContact("1", updatedContact);
+
+        // Assert
+        Assert.True(result);
+        Assert.Equal("Morgan", contacts[0].FirstName);
+        Assert.Equal("Johansson", contacts[0].LastName);
     }
 }

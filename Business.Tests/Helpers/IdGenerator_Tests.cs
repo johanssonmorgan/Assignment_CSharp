@@ -7,8 +7,6 @@ public class IdGenerator_Tests
     [Fact]
     public void Generate_ShouldReturnFirstPartOfGuid()
     {
-        // Arrange
-
         // Act
         string id = IdGenerator.Generate();
 

@@ -14,7 +14,6 @@ public class ContactService : IContactService
         _fileService = fileService;
     }
 
-
     public bool AddContact(ContactRegistrationForm registrationForm)
     {
         try
@@ -67,7 +66,6 @@ public class ContactService : IContactService
             return false;
         }
     }
-
 
     public bool UpdateContact(string id, Contact updatedContact)
     {
