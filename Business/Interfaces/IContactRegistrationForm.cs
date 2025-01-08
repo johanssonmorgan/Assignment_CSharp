@@ -1,11 +1,10 @@
 ﻿namespace Business.Interfaces
 {
-    public interface IUser
+    public interface IContactRegistrationForm
     {
         string City { get; set; }
         string Email { get; set; }
         string FirstName { get; set; }
-        string Id { get; set; }
         string LastName { get; set; }
         string Phone { get; set; }
         string PostalCode { get; set; }

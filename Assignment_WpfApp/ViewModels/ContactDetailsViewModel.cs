@@ -5,27 +5,27 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Assignment_WpfApp.ViewModels;
 
-public partial class UserDetailsViewModel(IServiceProvider serviceProvider) : ObservableObject
+public partial class ContactDetailsViewModel(IServiceProvider serviceProvider) : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider = serviceProvider;
 
     [ObservableProperty]
-    private User _user = new();
+    private Contact _contact = new();
 
     [RelayCommand]
     private void GoToEditView()
     {
-        var userEditViewModel = _serviceProvider.GetRequiredService<UserEditViewModel>();
-        userEditViewModel.User = User;
+        var contactEditViewModel = _serviceProvider.GetRequiredService<ContactEditViewModel>();
+        contactEditViewModel.Contact = Contact;
 
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = userEditViewModel;
+        mainViewModel.CurrentViewModel = contactEditViewModel;
     }
 
     [RelayCommand]
     private void Cancel()
     {
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<UserListViewModel>();
+        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
     }
 }

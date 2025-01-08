@@ -3,16 +3,16 @@ using Business.Models;
 
 namespace Business.Factories;
 
-public static class UserFactory
+public static class ContactFactory
 {
-    public static UserRegistrationForm Create()
+    public static ContactRegistrationForm Create()
     {
-        return new UserRegistrationForm();
+        return new ContactRegistrationForm();
     }
 
-    public static User Create(UserRegistrationForm form)
+    public static Contact Create(ContactRegistrationForm form)
     {
-        return new User
+        return new Contact
         {
             Id = IdGenerator.Generate(),
             FirstName = form.FirstName,

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Assignment_WpfApp.Views
 {
     /// <summary>
-    /// Interaction logic for UserAddView.xaml
+    /// Interaction logic for ContactListView.xaml
     /// </summary>
-    public partial class UserAddView : UserControl
+    public partial class ContactListView : UserControl
     {
-        public UserAddView()
+        public ContactListView()
         {
             InitializeComponent();
         }

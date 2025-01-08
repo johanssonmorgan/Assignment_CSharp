@@ -17,17 +17,17 @@
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
 
-                <DataTemplate DataType="{x:Type viewmodels:UserListViewModel}">
-                    <views:UserListView />
+                <DataTemplate DataType="{x:Type viewmodels:ContactListViewModel}">
+                    <views:ContactListView />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:UserAddViewModel}">
-                    <views:UserAddView />
+                <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
+                    <views:ContactAddView />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:UserDetailsViewModel}">
-                    <views:UserDetailsView />
+                <DataTemplate DataType="{x:Type viewmodels:ContactDetailsViewModel}">
+                    <views:ContactDetailsView />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewmodels:UserEditViewModel}">
-                    <views:UserEditView />
+                <DataTemplate DataType="{x:Type viewmodels:ContactEditViewModel}">
+                    <views:ContactEditView />
                 </DataTemplate>
                 
                 

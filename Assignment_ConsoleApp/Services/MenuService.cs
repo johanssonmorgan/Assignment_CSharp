@@ -10,12 +10,12 @@ namespace Assignment_ConsoleApp.Services;
 public class MenuService : IMenuService
 {
 
-    public MenuService(IUserService userService)
+    public MenuService(IContactService contactService)
     {
-        _userService = (UserService?)userService!;
+        _contactService = (ContactService?)contactService!;
     }
 
-    private readonly UserService _userService;
+    private readonly ContactService _contactService;
     public void ShowMenu()
     {
         MainMenu();
@@ -58,7 +58,7 @@ public class MenuService : IMenuService
         Console.Clear();
         Console.WriteLine("------ VIEW CONTACTS ------\n");
 
-        var contacts = _userService.GetUsers();
+        var contacts = _contactService.GetContacts();
 
         foreach (var contact in contacts)
         {
@@ -77,17 +77,17 @@ public class MenuService : IMenuService
         Console.Clear();
         Console.WriteLine("----- ADD CONTACT -----\n");
 
-        UserRegistrationForm user = UserFactory.Create();
+        ContactRegistrationForm contact = ContactFactory.Create();
 
-        user.FirstName = PromptAndValidate("Enter your first name: ", nameof(user.FirstName));
-        user.LastName = PromptAndValidate("Enter your last name: ", nameof(user.LastName));
-        user.Email = PromptAndValidate("Enter your email: ", nameof(user.Email));
-        user.Phone = PromptAndValidate("Enter your phone number: ", nameof(user.Phone));
-        user.StreetAddress = PromptAndValidate("Enter your street address: ", nameof(user.StreetAddress));
-        user.PostalCode = PromptAndValidate("Enter your postal code: ", nameof(user.PostalCode));
-        user.City = PromptAndValidate("Enter your city: ", nameof(user.City));
+        contact.FirstName = PromptAndValidate("Enter your first name: ", nameof(contact.FirstName));
+        contact.LastName = PromptAndValidate("Enter your last name: ", nameof(contact.LastName));
+        contact.Email = PromptAndValidate("Enter your email: ", nameof(contact.Email));
+        contact.Phone = PromptAndValidate("Enter your phone number: ", nameof(contact.Phone));
+        contact.StreetAddress = PromptAndValidate("Enter your street address: ", nameof(contact.StreetAddress));
+        contact.PostalCode = PromptAndValidate("Enter your postal code: ", nameof(contact.PostalCode));
+        contact.City = PromptAndValidate("Enter your city: ", nameof(contact.City));
 
-        _userService.AddUser(user);
+        _contactService.AddContact(contact);
     }
 
     public void QuitApplicationDialog()
@@ -119,7 +119,7 @@ public class MenuService : IMenuService
             var input = Console.ReadLine() ?? string.Empty;
 
             var results = new List<ValidationResult>();
-            var context = new ValidationContext(new UserRegistrationForm()) { MemberName = propertyName };
+            var context = new ValidationContext(new ContactRegistrationForm()) { MemberName = propertyName };
 
             //If validation is ok, input is returned and saved in to the form.
             if (Validator.TryValidateProperty(input, context, results))

@@ -1,38 +1,39 @@
 ﻿using Business.Interfaces;
 using Business.Models;
+using Business.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Assignment_WpfApp.ViewModels;
 
-public partial class UserEditViewModel(IServiceProvider serviceProvider, IUserService userService) : ObservableObject
+public partial class ContactEditViewModel(IServiceProvider serviceProvider, IContactService contactService) : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider = serviceProvider;
-    private readonly IUserService _userService = userService;
+    private readonly IContactService _contactService = contactService;
 
     [ObservableProperty]
-    private User _user = new();
+    private Contact _contact = new();
 
     [RelayCommand]
     private void Save()
     {
-        var result = _userService.UpdateUser(User.Id, User);
+        var result = _contactService.UpdateContact((string)Contact.Id, (Contact)Contact);
         if (result)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<UserListViewModel>();
+            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
         }
     }
 
     [RelayCommand]
     private void Delete()
     {
-        var result = _userService.DeleteUser(User.Id);
+        var result = _contactService.DeleteContact((string)Contact.Id);
         if (result)
         {
             var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<UserListViewModel>();
+            mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
         }
     }
 
@@ -40,6 +41,6 @@ public partial class UserEditViewModel(IServiceProvider serviceProvider, IUserSe
     private void Cancel()
     {
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<UserListViewModel>();
+        mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
     }
 }

@@ -19,17 +19,17 @@ public partial class App : Application
             .ConfigureServices(services =>
             {
                 services.AddSingleton<IFileService, FileService>();
-                services.AddSingleton<IUserService, UserService>();
+                services.AddSingleton<IContactService, ContactService>();
 
-                services.AddTransient<UserListViewModel>();
-                services.AddTransient<UserAddViewModel>();
-                services.AddTransient<UserDetailsViewModel>();
-                services.AddTransient<UserEditViewModel>();
+                services.AddTransient<ContactListViewModel>();
+                services.AddTransient<ContactAddViewModel>();
+                services.AddTransient<ContactDetailsViewModel>();
+                services.AddTransient<ContactEditViewModel>();
 
-                services.AddTransient<UserListView>();
-                services.AddTransient<UserAddView>();
-                services.AddTransient<UserDetailsView>();
-                services.AddTransient<UserEditView>();
+                services.AddTransient<ContactListView>();
+                services.AddTransient<ContactAddView>();
+                services.AddTransient<ContactDetailsView>();
+                services.AddTransient<ContactEditView>();
 
                 services.AddSingleton<MainViewModel>();
                 services.AddSingleton<MainWindow>();
@@ -42,7 +42,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         var mainViewModel = _host.Services.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _host.Services.GetRequiredService<UserListViewModel>();
+        mainViewModel.CurrentViewModel = _host.Services.GetRequiredService<ContactListViewModel>();
 
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.DataContext = mainViewModel;

@@ -13,6 +13,7 @@ public class IdGenerator_Tests
         string id = IdGenerator.Generate();
 
         // Assert
+        Assert.NotNull(id);
         Assert.False(string.IsNullOrWhiteSpace(id));
         Assert.True(id.Length == 8);
     }

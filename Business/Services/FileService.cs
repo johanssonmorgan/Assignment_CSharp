@@ -17,7 +17,7 @@ public class FileService : IFileService
         _filePath = Path.Combine(_directoryPath, fileName);
         _jsonSerializerOptions = new JsonSerializerOptions { WriteIndented = true };
     }
-    public bool SaveListToFile(List<User> list)
+    public bool SaveListToFile(List<Contact> list)
     {
         try
         {
@@ -35,14 +35,14 @@ public class FileService : IFileService
         }
     }
 
-    public List<User> LoadListFromFile()
+    public List<Contact> LoadListFromFile()
     {
         try
         {
             if (!File.Exists(_filePath))
                 return [];
             var json = File.ReadAllText(_filePath);
-            var list = JsonSerializer.Deserialize<List<User>>(json, _jsonSerializerOptions);
+            var list = JsonSerializer.Deserialize<List<Contact>>(json, _jsonSerializerOptions);
             return list ?? [];
         }
         catch (Exception ex)

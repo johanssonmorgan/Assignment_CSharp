@@ -9,7 +9,7 @@ IHost host = Host.CreateDefaultBuilder()
     .ConfigureServices(services =>
 {
     services.AddSingleton<IFileService, FileService>();
-    services.AddSingleton<IUserService, UserService>();
+    services.AddSingleton<IContactService, ContactService>();
     services.AddSingleton<IMenuService, MenuService>();
 })
     .Build();
