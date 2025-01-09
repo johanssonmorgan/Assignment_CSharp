@@ -13,24 +13,33 @@ public partial class ContactAddViewModel : ObservableObject
     private readonly IContactService _contactService;
     private readonly IServiceProvider _serviceProvider;
 
+    /// <summary>
+    /// Sets up the ViewModel with services and subscribes to form changes to update validation and button states.
+    /// </summary>
+    /// <param name="contactService">Service to manage contact data.</param>
+    /// <param name="serviceProvider">Service provider for resolving dependencies.</param>
     public ContactAddViewModel(IContactService contactService, IServiceProvider serviceProvider)
     {
         _contactService = contactService;
         _serviceProvider = serviceProvider;
 
-        // Subscribe to Contact.PropertyChanged to update CanSave dynamically
         Contact.PropertyChanged += (sender, args) =>
         {
             OnPropertyChanged(nameof(CanSave));
-            SaveCommand.NotifyCanExecuteChanged(); // Update the button state
+            SaveCommand.NotifyCanExecuteChanged();
         };
     }
 
+    /// <summary>
+    /// The contact form data being added.
+    /// </summary>
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(CanSave))]
     private ContactRegistrationForm _contact = ContactFactory.Create();
 
-    // Property to track if the form is valid
+    /// <summary>
+    /// Checks if the form is valid and can be saved.
+    /// </summary>
     public bool CanSave
     {
         get
@@ -47,14 +56,20 @@ public partial class ContactAddViewModel : ObservableObject
         }
     }
 
+    /// <summary>
+    /// Saves the new contact if the form is valid and switches back to the contact list view.
+    /// </summary>
     [RelayCommand(CanExecute = nameof(CanSave))]
     private void Save()
     {
-        _contactService.AddContact(Contact);
+        _contactService.AddContact(Contact); // Add the new contact
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
     }
 
+    /// <summary>
+    /// Cancels the operation and switches back to the contact list view.
+    /// </summary>
     [RelayCommand]
     private void Cancel()
     {

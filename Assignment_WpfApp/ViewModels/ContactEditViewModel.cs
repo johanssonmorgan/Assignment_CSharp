@@ -7,10 +7,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Assignment_WpfApp.ViewModels;
 
-public partial class ContactEditViewModel(IServiceProvider serviceProvider, IContactService contactService) : ObservableObject
+public partial class ContactEditViewModel : ObservableObject
 {
-    private readonly IServiceProvider _serviceProvider = serviceProvider;
-    private readonly IContactService _contactService = contactService;
+    private readonly IServiceProvider _serviceProvider;
+    private readonly IContactService _contactService;
+
+    public ContactEditViewModel(IServiceProvider serviceProvider, IContactService contactService)
+    {
+        _serviceProvider = serviceProvider;
+        _contactService = contactService;
+    }
 
     [ObservableProperty]
     private Contact _contact = new();
