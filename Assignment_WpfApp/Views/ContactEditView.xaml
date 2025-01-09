@@ -21,25 +21,25 @@
 
         <StackPanel Grid.Row="1" Margin="0 20 0 0">
             <TextBlock Text="First Name" />
-            <TextBox Text="{Binding Contact.FirstName}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.FirstName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="Last Name" />
-            <TextBox Text="{Binding Contact.LastName}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.LastName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="Email" />
-            <TextBox Text="{Binding Contact.Email}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.Email, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="Phone" />
-            <TextBox Text="{Binding Contact.Phone}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.Phone, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="Street Address" />
-            <TextBox Text="{Binding Contact.StreetAddress}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.StreetAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="Postal Code" />
-            <TextBox Text="{Binding Contact.PostalCode}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.PostalCode, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
 
             <TextBlock Text="City" />
-            <TextBox Text="{Binding Contact.City}" Margin="0 0 0 10" Padding="4" />
+            <TextBox Text="{Binding Contact.City, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10" Padding="4" />
         </StackPanel>
 
         <StackPanel Grid.Row="2">

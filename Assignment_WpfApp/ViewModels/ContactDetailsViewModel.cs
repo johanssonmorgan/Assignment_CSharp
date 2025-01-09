@@ -1,4 +1,5 @@
-﻿using Business.Models;
+﻿using Business.Interfaces;
+using Business.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,8 +16,11 @@ public partial class ContactDetailsViewModel(IServiceProvider serviceProvider) :
     [RelayCommand]
     private void GoToEditView()
     {
-        var contactEditViewModel = _serviceProvider.GetRequiredService<ContactEditViewModel>();
-        contactEditViewModel.Contact = Contact;
+        var contactEditViewModel = new ContactEditViewModel(
+            _serviceProvider,
+            _serviceProvider.GetRequiredService<IContactService>(),
+            Contact
+        );
 
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = contactEditViewModel;

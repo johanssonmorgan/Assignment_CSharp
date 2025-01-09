@@ -62,7 +62,7 @@ public partial class ContactAddViewModel : ObservableObject
     [RelayCommand(CanExecute = nameof(CanSave))]
     private void Save()
     {
-        _contactService.AddContact(Contact); // Add the new contact
+        _contactService.AddContact(Contact);
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _serviceProvider.GetRequiredService<ContactListViewModel>();
     }
