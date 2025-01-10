@@ -1,15 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--Register all styling files in App.xaml-->
+    <!-- Register all styling files in App.xaml -->
+    <!-- To bind the style to a button use StaticResource like following example:
+         <Button Style="{StaticResource PlaceholderButtonStyling}"> -->
     
-    <!--Made some different button design templates, note that its not
-    necessary for all styling to be in the design file. It can be good to have more general
-    styling in this file and then have more specific styling being set where the object is created.
-    To bind the style to a button use StaticResource like following example:
-    <Button Style="{StaticResource PlaceholderButtonStyling}">-->
+    <!-- Here is a few button templates from Hans video to have as a reference and see the genereal structure -->
     
-    <!--Following is a exit button template with hover effect-->
+    
+    <!-- Exit button template with hover effect -->
     <Style x:Key="PlaceholderButtonStyling" TargetType="Button">
         <Setter Property="Content" Value="&#xE7E8;" />
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
@@ -24,8 +23,8 @@
         <Setter Property="Padding" Value="5" />
         <Setter Property="Margin" Value="20 0 20 0" />
         
-        <!--Following is setter to control hover effect on a button:-->
-
+        
+        <!-- Following is setter to control hover effect on a button: -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -54,7 +53,9 @@
         </Setter>
     </Style>
 
-    <!--Following is a standard button template with rounded corners and hover effect-->
+    
+    
+    <!-- Standard button template with rounded corners and hover effect -->
     <Style x:Key="StandardButtonWithRoundedCorners" TargetType="Button">
         <Setter Property="Padding" Value="15" />
         <Setter Property="FontSize" Value="16" />
@@ -62,10 +63,15 @@
         <Setter Property="Background" Value="#FFF400" />
         <Setter Property="Foreground" Value="#613C03" />
 
-        <!--Following is setter to get rounded corners on a button, combined with hover effect (First ControlTemplate is overall design with rounded corners. We have to use a border in order to have corner radius, and the ControlTemplate.Triggers is triggers to get the hover effect to work)
-        :-->
+        <!-- Following is setter to get rounded corners on a button, combined with hover effect -->
+        
+        <!-- First ControlTemplate is overall design with rounded corners, we have to use a border in order to have corner radius.
+        
+             ControlTemplate.Triggers is triggers to get the hover effect to work: -->
+        
         <Setter Property="Template">
             <Setter.Value>
+                
                 <ControlTemplate TargetType="Button">
                     <Border 
                         x:Name="ButtonBorder" 
@@ -102,7 +108,9 @@
         
     </Style>
     
-    <!--Following is a standard cancel button template-->
+    
+    
+    <!-- Standard cancel button template -->
     <Style x:Key="CancelButton" TargetType="Button">
         <Setter Property="FontSize" Value="16" />
         <Setter Property="Background" Value="Transparent" />

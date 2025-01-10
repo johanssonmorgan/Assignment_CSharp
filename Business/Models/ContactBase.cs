@@ -120,9 +120,18 @@ public abstract class ContactBase : IContactRegistrationForm, IDataErrorInfo, IN
         }
     }
 
-    // IDataErrorInfo implementation for WPF validation. I had help creating this from Chat GPT,
+    // IDataErrorInfo implementation for WPF validation. I had help creating this from Chat GPT.
+
+    /// <summary>
+    /// Always returns null. Implemented for IDataErrorInfo compatibility.
+    /// </summary>
     public string Error => null!;
 
+    /// <summary>
+    /// Validates a property and returns the first error message if invalid.
+    /// </summary>
+    /// <param name="columnName">The property to validate.</param>
+    /// <returns>Error message or empty string.</returns>
     public string this[string columnName]
     {
         get
@@ -138,6 +147,11 @@ public abstract class ContactBase : IContactRegistrationForm, IDataErrorInfo, IN
             return string.Empty;
         }
     }
+
+    /// <summary>
+    /// Notifies the UI of property changes.
+    /// </summary>
+    /// <param name="propertyName">The changed property name.</param>
     protected void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

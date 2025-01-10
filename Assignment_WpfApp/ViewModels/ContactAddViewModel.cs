@@ -7,11 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
 namespace Assignment_WpfApp.ViewModels;
-
 public partial class ContactAddViewModel : ObservableObject
 {
     private readonly IContactService _contactService;
     private readonly IServiceProvider _serviceProvider;
+
+    // Had help making the validation work from ChatGPT, have tweaked most of it and adjusted it to work with my structure.
 
     /// <summary>
     /// Sets up the ViewModel with services and subscribes to form changes to update validation and button states.

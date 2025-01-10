@@ -36,8 +36,9 @@ public class FileService_Tests
 
             var result = fileService.SaveListToFile(expected);
 
-            // Assert
+        // Assert
             Assert.True(result);
+            Assert.True(File.Exists(filePath));
         }
         finally
         {
@@ -77,7 +78,7 @@ public class FileService_Tests
         {
             var result = fileService.LoadListFromFile();
 
-            // Assert
+        // Assert
             Assert.Equal(expected[0].Id, result[0].Id);
             Assert.Equal(expected[0].FirstName, result[0].FirstName);
             Assert.Equal(expected[0].LastName, result[0].LastName);
@@ -92,5 +93,23 @@ public class FileService_Tests
             if (File.Exists(filePath))
                 File.Delete(filePath);
         }
+    }
+
+    [Fact]
+    public void LoadListFromFile_ShouldReturnEmptyList_WhenNoFileExist()
+    {
+        // Arrange
+        var fileName = $"{Guid.NewGuid().ToString()}.json";
+        var filePath = Path.Combine("Data", fileName);
+
+        IFileService fileService = new FileService("Data", fileName);
+
+        // Act
+
+        var result = fileService.LoadListFromFile();
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.Empty(result);
     }
 }

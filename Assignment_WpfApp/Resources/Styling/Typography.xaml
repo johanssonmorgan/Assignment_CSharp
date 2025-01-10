@@ -1,16 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--Register all styling files in App.xaml-->
+    <!-- Register all styling files in App.xaml -->
+    <!-- To bind the style to a TextBlock use StaticResource like following example:
+         <TextBlock Text="{Binding PlaceholderTitleText}"> -->
 
-    <!--Made this stylesheet as a placeholder textstyle with different sytling elements, its not
-    necessary for all styling to be in the design file. It can be good to have more general
-    styling in this file and then have more specific styling being set where the object is created.
-    To bind the style to a TextBlock use StaticResource like following example:
-    <TextBlock Text="{Binding PlaceholderTitleText}">-->
+    <!-- Here is a few typography templates from Hans video to have as a reference and see the genereal structure -->
 
 
-    <!--Title Text-->
+    <!-- Title Text template -->
     <Style x:Key="PlaceholderTitleText" TargetType="TextBlock" >
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -18,7 +16,7 @@
         <Setter Property="FontSize" Value="24" />
     </Style>
 
-    <!--Headline Text-->
+    <!-- Headline Text template -->
     <Style x:Key="PlaceholderHeadlineText" TargetType="TextBlock" >
         <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -27,16 +25,16 @@
         <Setter Property="FontWeight" Value="Medium" />
         <Setter Property="Margin" Value="0 0 0 20" />
     </Style>
-    
-    <!--Label Text-->
+
+    <!-- Label Text template -->
     <Style x:Key="LabelText" TargetType="TextBlock">
         <Setter Property="Margin" Value="3 5" />
         <Setter Property="Foreground" Value="#9FABBD" />
         <Setter Property="FontSize" Value="15" />
         <Setter Property="FontWeight" Value="Medium" />
     </Style>
-    
-    <!--Warning Text-->
+
+    <!-- Warning Text template -->
     <Style x:Key="WarningText" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="TextWrapping" Value="Wrap" />
@@ -47,7 +45,7 @@
         <Setter Property="Height" Value="50" />
     </Style>
 
-    <!--Input Text-->
+    <!-- Input Text template -->
     <Style x:Key="InputText" TargetType="TextBox">
         <Setter Property="Margin" Value="0 0 0 15" />
         <Setter Property="Background" Value="#44434F" />
@@ -57,9 +55,9 @@
         <Setter Property="BorderThickness" Value="0" />
     </Style>
 
-    <!--Input Area Text-->
+    <!-- Input Area Text template // Inherits from InputText -->
     <Style x:Key="InputAreaText" TargetType="TextBox" BasedOn="{StaticResource InputText}">
-        <!--Based on inherits all properties set in {StaticResource InputText}-->
+        <!-- BasedOn inherits all properties set in {StaticResource InputText} -->
         <Setter Property="Height" Value="300" />
         <Setter Property="TextWrapping" Value="Wrap" />
     </Style>

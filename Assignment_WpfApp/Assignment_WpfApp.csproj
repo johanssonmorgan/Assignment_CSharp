@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Business\Business.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Resources\Images\" />
-  </ItemGroup>
-
 </Project>

@@ -6,14 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
 namespace Assignment_WpfApp.ViewModels;
-
-/// <summary>
-/// ViewModel for editing an existing contact, with validation and data handling.
-/// </summary>
 public partial class ContactEditViewModel : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly IContactService _contactService;
+
+    // Had help making the validation work from ChatGPT, have tweaked most of it and adjusted it to work with my structure.
 
     /// <summary>
     /// Initializes a new instance of the ContactEditViewModel.
@@ -26,10 +24,8 @@ public partial class ContactEditViewModel : ObservableObject
         _serviceProvider = serviceProvider;
         _contactService = contactService;
 
-        // Assign the contact for editing
         Contact = contact;
 
-        // Subscribe to property changes in Contact to update validation
         Contact.PropertyChanged += (sender, args) =>
         {
             OnPropertyChanged(nameof(CanSave));
