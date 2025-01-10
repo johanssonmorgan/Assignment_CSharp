@@ -1,6 +1,7 @@
 ﻿using Business.Factories;
 using Business.Interfaces;
 using Business.Models;
+using System.Diagnostics;
 
 namespace Business.Services;
 
@@ -25,6 +26,7 @@ public class ContactService : IContactService
         }
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
             return false;
         }
     }
@@ -39,6 +41,7 @@ public class ContactService : IContactService
 
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
             return Enumerable.Empty<Contact>();
         }
 
@@ -63,6 +66,7 @@ public class ContactService : IContactService
 
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
             return false;
         }
     }
@@ -87,6 +91,7 @@ public class ContactService : IContactService
 
         catch (Exception ex)
         {
+            Debug.WriteLine(ex.Message);
             return false;
         }
     }
