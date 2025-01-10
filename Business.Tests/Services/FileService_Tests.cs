@@ -11,10 +11,10 @@ public class FileService_Tests
     public void SaveListToFile_ShouldSaveListToAFile()
     {
         // Arrange
-        var fileName = $"{Guid.NewGuid().ToString()}.json";
+        var fileName = $"{Guid.NewGuid()}.json";
         var filePath = Path.Combine("Data", fileName);
-        List<Contact> expected = new List<Contact>()
-        {
+        List<Contact> expected =
+        [
             new Contact
             {
                 Id = "Test",
@@ -26,15 +26,13 @@ public class FileService_Tests
                 PostalCode = "Test",
                 City = "Test",
             }
-        };
+        ];
 
-        IFileService fileService = new FileService("Data", fileName);
 
         // Act
         try
         {
-
-            var result = fileService.SaveListToFile(expected);
+            var result = new FileService("Data", fileName).SaveListToFile(expected);
 
         // Assert
             Assert.True(result);
@@ -51,32 +49,30 @@ public class FileService_Tests
     public void LoadListFromFile_ShouldReturnListOfContactsFromFile()
     {
         // Arrange
-        var fileName = $"{Guid.NewGuid().ToString()}.json";
+        var fileName = $"{Guid.NewGuid()}.json";
         var filePath = Path.Combine("Data", fileName);
-        List<Contact> expected = new List<Contact>()
-        {
+        List<Contact> expected =
+        [
             new Contact
             {
-                Id = "Test",
-                FirstName = "Test",
-                LastName = "Test",
-                Email = "Test",
-                Phone = "Test",
-                StreetAddress = "Test",
-                PostalCode = "Test",
-                City = "Test",
+                Id = "Id",
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Email = "Email",
+                Phone = "Phone",
+                StreetAddress = "StreetAddress",
+                PostalCode = "PostalCode",
+                City = "City",
             }
-        };
+        ];
 
         var json = JsonSerializer.Serialize(expected);
         File.WriteAllText(filePath, json);
 
-        IFileService fileService = new FileService("Data", fileName);
-
         // Act
         try
         {
-            var result = fileService.LoadListFromFile();
+            var result = new FileService("Data", fileName).LoadListFromFile();
 
         // Assert
             Assert.Equal(expected[0].Id, result[0].Id);
@@ -99,14 +95,11 @@ public class FileService_Tests
     public void LoadListFromFile_ShouldReturnEmptyList_WhenNoFileExist()
     {
         // Arrange
-        var fileName = $"{Guid.NewGuid().ToString()}.json";
-        var filePath = Path.Combine("Data", fileName);
-
-        IFileService fileService = new FileService("Data", fileName);
+        var fileName = $"{Guid.NewGuid()}.json";
 
         // Act
 
-        var result = fileService.LoadListFromFile();
+        var result = new FileService("Data", fileName).LoadListFromFile();
 
         // Assert
         Assert.NotNull(result);

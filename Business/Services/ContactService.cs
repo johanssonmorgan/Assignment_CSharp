@@ -5,15 +5,10 @@ using System.Diagnostics;
 
 namespace Business.Services;
 
-public class ContactService : IContactService
+public class ContactService(IFileService fileService) : IContactService
 {
-    private readonly IFileService _fileService;
+    private readonly IFileService _fileService = fileService;
     private List<Contact> _contacts = [];
-
-    public ContactService(IFileService fileService)
-    {
-        _fileService = fileService;
-    }
 
     public bool AddContact(ContactRegistrationForm registrationForm)
     {
@@ -42,7 +37,7 @@ public class ContactService : IContactService
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
-            return Enumerable.Empty<Contact>();
+            return [];
         }
 
     }
